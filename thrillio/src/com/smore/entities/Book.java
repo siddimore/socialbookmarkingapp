@@ -31,11 +31,11 @@ public class Book extends Bookmark{
         this.author = author;
     }
 
-    public String getGenre() {
+    public String[] getGenre() {
         return genre;
     }
 
-    public void setGenre(String genre) {
+    public void setGenre(String[] genre) {
         this.genre = genre;
     }
 
@@ -49,7 +49,7 @@ public class Book extends Bookmark{
 
     private String publisher;
     private String[] author;
-    private String genre;
+    private String[] genre;
     private double amazonRating;
     private int publicationYear;
 

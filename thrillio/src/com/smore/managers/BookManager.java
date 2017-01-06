@@ -1,6 +1,8 @@
 package com.smore.managers;
 
+import com.smore.dao.BookMarkDao;
 import com.smore.entities.Book;
+import com.smore.entities.Bookmark;
 import com.smore.entities.Movie;
 import com.smore.entities.WebLink;
 
@@ -10,11 +12,12 @@ import com.smore.entities.WebLink;
 public class BookManager {
 
     private static BookManager instance = new BookManager();
+    private static BookMarkDao dao = new BookMarkDao();
     private BookManager() {
 
     }
 
-    public BookManager getInstance() {
+    public static BookManager getInstance() {
         if(instance != null) {
             return instance;
         }
@@ -35,7 +38,7 @@ public class BookManager {
 
     }
 
-    public Book createBook(long id, String publisher, String[] authors, String genre, double rating, int year) {
+    public Book createBook(long id, String publisher, String[] authors, String[] genre, double rating, int year) {
         Book newBook = new Book();
         newBook.setId(id);
         newBook.setPublisher(publisher);
@@ -53,9 +56,14 @@ public class BookManager {
     private double imdbRating;
     private int releaseYear;
 
-    public Movie createMovie(String[] inputCast, String[] inputDirectors, String inputGenre, double inputRating, int inputYear) {
+
+
+
+    public Movie createMovie(long id, String title, String[] inputCast, String[] inputDirectors, String inputGenre, double inputRating, int inputYear) {
 
         Movie newMovie = new Movie();
+        newMovie.setId(id);
+        newMovie.setTitle(title);
         newMovie.setCast(inputCast);
         newMovie.setDirectors(inputDirectors);
         newMovie.setGenre(inputGenre);
@@ -63,5 +71,9 @@ public class BookManager {
         newMovie.setReleaseYear(inputYear);
 
         return newMovie;
+    }
+
+    public Bookmark[][] getBookMarks() {
+        return dao.getBookMarks();
     }
 }

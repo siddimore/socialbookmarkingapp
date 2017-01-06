@@ -46,6 +46,7 @@ public class Movie extends Bookmark{
         this.imdbRating = imdbRating;
     }
 
+    private int id;
     private String[] cast;
     private String[] directors;
     private String genre;

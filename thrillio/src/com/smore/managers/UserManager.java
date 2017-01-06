@@ -1,5 +1,6 @@
 package com.smore.managers;
 
+import com.smore.dao.UserDao;
 import com.smore.entities.User;
 
 /**
@@ -8,6 +9,8 @@ import com.smore.entities.User;
 public class UserManager {
 
     private static UserManager instance = new UserManager();
+    private static UserDao dao = new UserDao();
+
     private UserManager() {
 
     }
@@ -34,5 +37,9 @@ public class UserManager {
         user.setLastName(lastName);
         user.setUserType(userType);
         return user;
+    }
+
+    public User[] getUsers() {
+        return dao.getUsers();
     }
 }
